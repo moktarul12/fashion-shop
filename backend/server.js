@@ -46,13 +46,13 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Note: Uncomment when you pre-build frontend and serve/proxy request through server
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '/frontend/build')));
+ if (process.env.NODE_ENV === 'production') {
+   app.use(express.static(path.join(__dirname, '/frontend/build')));
 
-//   app.get('*', (req, res) =>
-//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-//   );
-// }
+   app.get('*', (req, res) =>
+     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+   );
+ }
 
 app.use(notFound);
 app.use(errorHandler);
